@@ -1,0 +1,42 @@
+{% block body %}
+    <nav class="navbar navbar-expand-lg p-3">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="/public/index">PRELEC - Tickets</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown"
+                    aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+
+            {% if session.user %}
+            <div class=" collapse navbar-collapse" id="navbarNavDropdown">
+                <ul class="navbar-nav ms-auto ">
+                    <li class="nav-item">
+                        <a class="nav-link mx-2 active" aria-current="page" href="/public/ticket/create">Créer un ticket</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link mx-2" href="/public/tickets">Mes tickets</a>
+                    </li>
+                    <li class="nav-item">
+                        <div class="dropdown">
+                            <div class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1"
+                                 data-bs-toggle="dropdown" aria-expanded="false">
+                                <i class="fa-solid fa-user"></i>
+                            </div>
+                            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                                <li><a class="dropdown-item" href="/public/logout">Logout</a></li>
+                            </ul>
+                        </div>
+                        {% else %}
+                            <a class="nav-link mx-2" href="/public/login">
+                                <button type="button" class="btn btn-labeled btn-light">
+                                    <span class="btn-label"><i class="fa fa-user"></i></span>login
+                                </button>
+                            </a>
+                        {% endif %}
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+{% endblock %}

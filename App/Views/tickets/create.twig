@@ -1,0 +1,56 @@
+{% extends "base.html" %}
+
+{% block title %}Login{% endblock %}
+
+{% block body %}
+
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-10 col-xl-9 mx-auto">
+                <div class="card flex-row my-5 border-0 shadow rounded-3 overflow-hidden">
+                    <div class="card-img-left d-none d-md-flex">
+                        <!-- Background image for card set in CSS! -->
+                    </div>
+                    <div class="card-body p-4 p-sm-5">
+                        <h5 class="card-title text-center mb-5 fw-light fs-5">Créer un ticket</h5>
+                        <form action="create" method="POST">
+                            <div class="form-floating mb-3">
+                                <input name="title" type="text" class="form-control" id="title"
+                                       placeholder="Titre du ticket">
+                                <label for="title">Titre du ticket</label>
+                            </div>
+
+                            <hr>
+                            <div class="form-floating mb-3">
+                                <textarea rows="10" cols="40" name="desc" class="form-control" id="desc"
+                                          placeholder="Description du ticket"></textarea>
+                                <label for="desc">Description du ticket</label>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <label for="project">Projet :</label>
+                                    <select id="project" name="project" class="form-select">
+                                        {% for project in projects %}
+                                            <option name="{{ project.id }}" value="{{ project.id }}">{{ project.name }}</option>
+                                        {% endfor %}
+                                    </select>
+                                </div>
+                            </div>
+                            <input type="hidden" value="true" name="validate">
+                            <div class="d-grid mb-2 mt-5">
+                                <button class="btn btn-lg btn-primary btn-login fw-bold text-uppercase" type="submit">
+                                    Envoyer le ticket
+                                </button>
+                            </div>
+
+
+                            <hr class="my-4">
+
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
